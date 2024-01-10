@@ -4,10 +4,35 @@
 //        - Items are defined as "key:value pair".
 //        - Keys = Items of Struct, Value = Data type of each item
 
+// Methods of Struct
+// - Methods are like user-defined functions.
+// - Declared specifically within the Struct context.
+// - "&self" parameter is passed inside the method function.
+
 struct Course {
     code: i32,
     name: String,
     level: String,
+}
+
+fn print_struct(c: Course) {
+    println!("\nPrinting from print_struct function");
+    println!("Name: {}, Level: {}, Code: {}", c.name, c.level, c.code);
+}
+
+fn return_struct(c2: Course, c3: Course) -> Course {
+    if c2.name == "JavaScript" {
+        return c2;
+    } else {
+        return c3;
+    }
+}
+
+impl Course {
+    fn name_code(&self) -> String {
+        println!("\nUsing Struct Method");
+        format!("{} {}", self.name, self.code)
+    }
 }
 
 fn main() {
@@ -23,12 +48,12 @@ fn main() {
     );
     print_struct(course1);
 
-    let mut course2 = Course {
+    let mut course2: Course = Course {
         code: 131,
         name: String::from("JavaScript"),
         level: String::from("Intermediate"),
     };
-    println!("Before updating");
+    println!("\nBefore updating");
     println!(
         "Name: {}, Level: {}, Code: {}",
         course2.name, course2.level, course2.code
@@ -50,19 +75,13 @@ fn main() {
     };
 
     let ret = return_struct(course2, course3);
-    println!("Values from return_struct function");
+    println!("\nValues from return_struct function");
     println!("Name:{}, Leve:{}, Code:{}", ret.name, ret.level, ret.code);
-}
 
-fn print_struct(c: Course) {
-    println!("Printing from print_struct function");
-    println!("Name: {}, Level: {}, Code: {}", c.name, c.level, c.code);
-}
-
-fn return_struct(c2: Course, c3: Course) -> Course {
-    if c2.name == "JavaScript" {
-        return c2;
-    } else {
-        return c3;
-    }
+    let course4 = Course {
+        code: 137,
+        name: String::from("Java"),
+        level: String::from("Beginner"),
+    };
+    println!("This is {} course: {}", course4.level, course4.name_code());
 }
