@@ -24,7 +24,7 @@ impl TrafficLights {
     }
 }
 
-// Option = Option is built-in enum in Rust. Have two variants "Some" and "None".
+// Option = Option is built-in enum in Rust. Have two variants "Some(data type)" and "None".
 fn learn_lang(my_lang: String) -> Option<bool> {
     if my_lang == "Rust" {
         return Some(true);
